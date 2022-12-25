@@ -7,7 +7,7 @@ export default function Orders() {
   const newArr = orderData.map((ele) => {
     const booksArr = ele.books.map((book) => {
       return (
-        <div className="line">
+        <div className="line" key={book.url}>
           <div className="product">
             <img src={book.url} className="order-img" />
             <h3>{book.name}</h3>
@@ -17,7 +17,7 @@ export default function Orders() {
       );
     });
     return (
-      <div className="order-unit">
+      <div className="order-unit" key={ele.orderId}>
         <div className="left">
           <h1>
             Order Id : <span>{ele.orderId}</span>
