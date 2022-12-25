@@ -1,12 +1,20 @@
-export const paymentBool = () => {
+export const fetchData = (payload) => {
   return {
-    type: "FLIP_BOOL",
+    type: "FETCH_BOOKS_DATA",
+    payload,
   };
 };
 
-export const setOrder = (payload) => {
+export const fetchOrder = (payload) => {
   return {
-    type: "SET_ORDER_DATA",
+    type: "FETCH_ORDER_DATA",
+    payload,
+  };
+};
+
+export const removeOrder = (payload) => {
+  return {
+    type: "REMOVE_ORDER",
     payload,
   };
 };

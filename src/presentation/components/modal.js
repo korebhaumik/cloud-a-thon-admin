@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Star from "./star";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { incre } from "../../logic/actions/cartActions";
+import { remove } from "../../logic/actions/removeActions";
 
 export default function Modal({
   id,
@@ -67,7 +67,7 @@ export default function Modal({
               }}
               whileTap={{ scale: 0.9 }}
               onClick={() => {
-                dispatch(incre({ id, quantity, url, name }));
+                dispatch(remove({ id }));
               }}
             >
               Remove Book

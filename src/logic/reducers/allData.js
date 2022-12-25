@@ -2,7 +2,7 @@ import data from "../data";
 
 export const dataReducer = (state = [], actions) => {
   switch (actions.type) {
-    case "FETCH_DATA": {
+    case "FETCH_BOOKS_DATA": {
       const payload = actions.payload;
       const state = payload.map((item) => {
         return { ...item, quantity: 0 };
@@ -10,24 +10,12 @@ export const dataReducer = (state = [], actions) => {
       // let temp = [...payload];
       return state;
     }
-    case "ADD_ITEM": {
-      const newQuantity = actions.payload.quantity + 1;
-      let temp = state;
-      state = temp.map((book) => {
-        if (book.id === actions.payload.id) {
-          return { ...book, quantity: newQuantity };
-        } else return book;
-      });
-      return state;
-    }
 
     case "REMOVE_ITEM": {
-      const newQuantity = actions.payload.quantity - 1;
+      const bookId = actions.payload.id;
       let temp = state;
-      state = temp.map((book) => {
-        if (book.id === actions.payload.id) {
-          return { ...book, quantity: newQuantity };
-        } else return book;
+      state = temp.filter((book) => {
+        return book.id != bookId;
       });
       return state;
     }

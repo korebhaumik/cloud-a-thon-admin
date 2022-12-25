@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
 import { dataReducer } from "./allData";
-import { globalBoolReducer, orderDataReducer } from "./global";
+import { orderReducer } from "./orderData";
 
 const rootReducer = combineReducers({
   allData: dataReducer,
-  gBool: globalBoolReducer,
-  orderData: orderDataReducer,
+  orderData: orderReducer,
 });
 
 export default rootReducer;

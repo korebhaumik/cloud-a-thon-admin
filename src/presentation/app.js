@@ -11,7 +11,7 @@ import Books from "./pages/books";
 import Orders from "./pages/orders";
 import Login from "./pages/login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { fetchData } from "../logic/actions/cartActions";
+import { fetchData } from "../logic/actions/globalActions";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,7 +42,6 @@ export default function App() {
         <Route exact path="/books" element={<Books />} />
         <Route exact path="/orders" element={<Orders />} />
         <Route exact path="/upload" element={<Upload />} />
-        {/* <Home /> */}
       </Routes>
     </Router>
   );
