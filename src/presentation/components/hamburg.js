@@ -99,11 +99,11 @@ export default function Hamburg() {
               setNewBool(false);
             }}
             style={{
-              textDecoration: bool.uploadBool ? "underline" : "",
-              color: bool.uploadBool ? "#0058CC" : "",
+              textDecoration: bool.ordersBool ? "underline" : "",
+              color: bool.ordersBool ? "#0058CC" : "",
             }}
           >
-            My Cart
+            Orders
           </h1>
           <h1
             onClick={() => {
@@ -111,11 +111,11 @@ export default function Hamburg() {
               setNewBool(false);
             }}
             style={{
-              textDecoration: bool.ordersBool ? "underline" : "",
-              color: bool.ordersBool ? "#0058CC" : "",
+              textDecoration: bool.uploadBool ? "underline" : "",
+              color: bool.uploadBool ? "#0058CC" : "",
             }}
           >
-            Contact Us
+            Upload
           </h1>
         </div>
       )}

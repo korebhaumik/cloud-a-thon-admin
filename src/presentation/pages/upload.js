@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Upload() {
   const handleSubmit = (e) => {
@@ -270,9 +271,18 @@ export default function Upload() {
             </div>
           </div>
         </div>
-        <button type="submit" className="form-button">
+        <motion.button
+          type="submit"
+          className="form-button"
+          whileHover={{
+            scale: 1.01,
+            transition: { duration: 0.15 },
+            backgroundColor: "#0CAD28",
+          }}
+          whileTap={{ scale: 0.9 }}
+        >
           Upload
-        </button>
+        </motion.button>
       </form>
     </div>
   );

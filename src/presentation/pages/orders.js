@@ -41,9 +41,10 @@ export default function Orders() {
         </div>
         <div className="right">
           <h1>Customer Details</h1>
-          <h2>{ele.address}</h2>
+          <h2>{ele.user}</h2>
           <h2>{ele.email}</h2>
           <h2>{ele.number}</h2>
+          <h2>{ele.address}</h2>
         </div>
       </div>
     );

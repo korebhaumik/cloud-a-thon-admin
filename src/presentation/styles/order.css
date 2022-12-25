@@ -103,7 +103,7 @@
   }
   .order-unit {
     margin: 5em 1em;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
   }
   .right {
