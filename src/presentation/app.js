@@ -12,6 +12,7 @@ import Orders from "./pages/orders";
 import Login from "./pages/login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchData } from "../logic/actions/globalActions";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export default function App() {
   }, []);
   return (
     <Router>
+      <Toaster />
       <Navbar />
       <Routes>
         <Route exact path="/books" element={<Books />} />

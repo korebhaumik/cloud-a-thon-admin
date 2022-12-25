@@ -3,6 +3,7 @@ import Star from "./star";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { remove } from "../../logic/actions/removeActions";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Modal({
   id,
@@ -67,6 +68,7 @@ export default function Modal({
               }}
               whileTap={{ scale: 0.9 }}
               onClick={() => {
+                toast.success(`${name} removed successfully.`);
                 dispatch(remove({ id }));
               }}
             >
