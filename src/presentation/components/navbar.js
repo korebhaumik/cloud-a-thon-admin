@@ -15,7 +15,7 @@ export default function Navbar() {
 
   useEffect(() => {
     switch (location.pathname) {
-      case "/books": {
+      case "/": {
         setBool({
           homeBool: false,
           booksBool: true,
@@ -52,7 +52,7 @@ export default function Navbar() {
       <nav className="nav-right">
         <motion.span
           onTap={() => {
-            !bool.booksBool && navigate("/books");
+            !bool.booksBool && navigate("/");
           }}
           style={{
             textDecoration: bool.booksBool ? "underline" : "",

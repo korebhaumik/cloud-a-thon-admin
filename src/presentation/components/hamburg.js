@@ -13,7 +13,7 @@ export default function Hamburg() {
 
   useEffect(() => {
     switch (location.pathname) {
-      case "/books": {
+      case "/": {
         setBool({
           homeBool: false,
           booksBool: true,
@@ -83,7 +83,7 @@ export default function Hamburg() {
 
           <h1
             onClick={() => {
-              navigate("/books");
+              navigate("/");
               setNewBool(false);
             }}
             style={{
