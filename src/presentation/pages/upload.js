@@ -45,8 +45,6 @@ export default function Upload() {
             <p>Upload Image</p>
             <h4>Files supported png, jpg, jpeg.</h4>
           </div>
-
-          {/* <button type="submit">Upload</button> */}
           <div className="div-right">{/* <h1>Hello world</h1> */}</div>
         </div>
         <div className="upload-right">
@@ -272,6 +270,9 @@ export default function Upload() {
             </div>
           </div>
         </div>
+        <button type="submit" className="form-button">
+          Upload
+        </button>
       </form>
     </div>
   );
