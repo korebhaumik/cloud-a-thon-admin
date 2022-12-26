@@ -37,23 +37,12 @@ export default function Upload() {
     },
   });
 
-  //write this in the cloud function for firebase
-  function test() {
-    let arraygenre = []
-    Object.keys(formData.genre).forEach(function (key, index) {
-      if (formData.genre[key]) {
-        arraygenre.push(key)
-      }
-    });
-    console.log(arraygenre)
-  }
-
   // sending to function write on firestore
   function send2() {
     console.log("in send 2")
     try {
-      // fetch("https://us-central1-cloud-a-thon.cloudfunctions.net/firenode/api/create", {
-      fetch("http://127.0.0.1:5001/cloud-a-thon/us-central1/firenode/api/create", {
+      fetch("https://us-central1-admin-mehdi-cloud.cloudfunctions.net/firenode/api/create", {
+      // fetch("http://127.0.0.1:5001/cloud-a-thon/us-central1/firenode/api/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +67,7 @@ export default function Upload() {
       let inputElem = document.getElementById("imgfile")
       let file = inputElem.files[0]
 
-      console.log(`https://storage.googleapis.com/finalbucket-cloudathon/${formData.name}_image.png`)
+      console.log(`https://storage.googleapis.com/book-images-69420/${formData.name}_image.png`)
       // this will be the url in firestore url param
       // https://storage.googleapis.com/finalbucket-cloudathon/${formData.name}_image.png
 
@@ -88,9 +77,9 @@ export default function Upload() {
       let inputData = new FormData()
       inputData.append("imgfile", newFile)
       console.log(inputData)
-      // http://localhost:8080/
-      // https://docker-storage-1-d7fxidgsxa-uc.a.run.app
-      fetch("https://docker-storage-1-d7fxidgsxa-uc.a.run.app/uploadimg", {
+      // http://localhost:8084/
+      // https://dockernode1-2whsfrxuda-uc.a.run.app
+      fetch("https://dockernode1-2whsfrxuda-uc.a.run.app/uploadimg",{
         method: "POST",
         body: inputData
       })

@@ -21,7 +21,8 @@ export default function App() {
   const handleFetch = async () => {
     try {
       const res = await fetch(
-        "https://us-central1-cloud-a-thon.cloudfunctions.net/httpClientFirestore/api/getData"
+        // https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpClientFirestore/getBooksData
+        "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpClientFirestore/getBooksData"
         // "http://127.0.0.1:5001/cloud-a-thon/us-central1/httpGetData/api/getData"
       );
       if (res.ok) {
@@ -53,7 +54,7 @@ export default function App() {
     }
   };
   useEffect(() => {
-    handleFetchOrders();
+    // handleFetchOrders();
     handleFetch();
   }, []);
   return (
