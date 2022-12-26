@@ -1,5 +1,16 @@
 import { React, useState } from "react";
 import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = (param) => {
+  if (param == 1) {
+    toast.success("posted book succesfully");
+  } else if (param == 2) {
+    // do something for loading
+  } else {
+    toast.error("some error occured");
+  }
+};
 
 export default function Upload() {
   const handleSubmit = (e) => {
@@ -23,12 +34,71 @@ export default function Upload() {
       educational: false,
     },
   });
+
+  // sending to function write on firestore
+  function send2() {
+    console.log("in send 2");
+    try {
+      fetch(
+        "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/firenode/api/create",
+        {
+          // fetch("http://127.0.0.1:5001/cloud-a-thon/us-central1/firenode/api/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      ).then((res) => {
+        notify(1);
+      });
+    } catch {
+      notify(0);
+    }
+  }
+
+  // sending to function to store on bucket
+  function send1() {
+    console.log("in send 1");
+
+    try {
+      let inputElem = document.getElementById("imgfile");
+      let file = inputElem.files[0];
+
+      console.log(
+        `https://storage.googleapis.com/book-images-69420/${formData.name}_image.png`
+      );
+      // this will be the url in firestore url param
+      // https://storage.googleapis.com/finalbucket-cloudathon/${formData.name}_image.png
+
+      // below is the code for renaming the file
+      let blob = file.slice(0, file.size, "image/*"); //MIME type
+      let newFile = new File([blob], `${formData.name}_image.png`, {
+        type: "image/*",
+      });
+      let inputData = new FormData();
+      inputData.append("imgfile", newFile);
+      console.log(inputData);
+      // http://localhost:8084/
+      // https://dockernode1-2whsfrxuda-uc.a.run.app
+      fetch("https://dockernode1-2whsfrxuda-uc.a.run.app/uploadimg", {
+        method: "POST",
+        body: inputData,
+      }).then((res) => {
+        send2();
+      });
+    } catch {
+      notify(0);
+    }
+  }
+
   return (
     <div>
+      <Toaster />
       <form className="upload-container" onSubmit={handleSubmit}>
         <div className="upload-left">
           <div className="input-wrapper">
-            <input type="file" />
+            <input type="file" id="imgfile" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -51,11 +121,31 @@ export default function Upload() {
         <div className="upload-right">
           <div className="upload-unit">
             <h1>Book Name</h1>
-            <input placeholder="Eg: The End Of The World" />
+            <input
+              placeholder="Eg: The End Of The World"
+              onChange={(e) => {
+                setformData((prev) => {
+                  return {
+                    ...prev,
+                    name: e.target.value,
+                  };
+                });
+              }}
+            />
           </div>
           <div className="upload-unit">
             <h1>Book Author</h1>
-            <input placeholder="Eg: H G Wells" />
+            <input
+              placeholder="Eg: H G Wells"
+              onChange={(e) => {
+                setformData((prev) => {
+                  return {
+                    ...prev,
+                    author: e.target.value,
+                  };
+                });
+              }}
+            />
           </div>
           <div className="upload-genre">
             <h1>Select Genre: </h1>
@@ -274,6 +364,7 @@ export default function Upload() {
         <motion.button
           type="submit"
           className="form-button"
+          onClick={send1}
           whileHover={{
             scale: 1.01,
             transition: { duration: 0.15 },

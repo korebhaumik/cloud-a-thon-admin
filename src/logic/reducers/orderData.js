@@ -5,6 +5,11 @@ export const orderReducer = (state = [], actions) => {
       return state;
     }
     case "REMOVE_ORDER": {
+      const orderId = actions.payload;
+      let temp = state;
+      state = temp.filter((order) => {
+        return order.orderId != orderId;
+      });
       return state;
     }
     default: {

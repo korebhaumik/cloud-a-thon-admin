@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import Star from "./star";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { remove } from "../../logic/actions/removeActions";
-import { Toaster, toast } from "react-hot-toast";
+import { remove } from "../../logic/actions/globalActions";
+import { toast } from "react-hot-toast";
 
 export default function Modal({
   id,

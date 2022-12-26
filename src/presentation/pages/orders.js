@@ -1,9 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { removeOrder } from "../../logic/actions/globalActions";
+import { toast } from "react-hot-toast";
 
 export default function Orders() {
   const orderData = useSelector((state) => state.orderData);
+  const dispatch = useDispatch();
+  const handleRemoveOrder = (id) => {
+    dispatch(removeOrder(id));
+    console.log(id);
+  };
   const newArr = orderData.map((ele) => {
     const booksArr = ele.books.map((book) => {
       return (
@@ -35,6 +42,9 @@ export default function Orders() {
               backgroundColor: "#0CAD28",
             }}
             whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              handleRemoveOrder(ele.orderId);
+            }}
           >
             Delivered
           </motion.button>

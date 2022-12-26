@@ -18,3 +18,10 @@ export const removeOrder = (payload) => {
     payload,
   };
 };
+
+export const remove = (payload) => {
+  return {
+    type: "REMOVE_ITEM",
+    payload,
+  };
+};
