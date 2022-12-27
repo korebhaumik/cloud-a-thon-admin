@@ -25,7 +25,6 @@ export default function Books() {
       />
     );
   });
-  dispatch({ type: "MAINTAIN_BOOL" });
   return (
     <>
       {data.length ? (

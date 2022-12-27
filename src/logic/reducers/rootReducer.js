@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 import { dataReducer } from "./allData";
-import { orderReducer } from "./orderData";
+import { orderReducer, boolReducer } from "./orderData";
 
 const rootReducer = combineReducers({
+  gBool: boolReducer,
   allData: dataReducer,
   orderData: orderReducer,
 });

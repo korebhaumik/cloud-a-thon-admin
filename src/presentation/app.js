@@ -44,6 +44,7 @@ export default function App() {
       if (res.ok) {
         const output = await res.json();
         dispatch(fetchOrder(output.newData));
+        dispatch({ type: "CHANGE_BOOL" });
       } else {
         const failedPromise = await res.json();
         Promise.reject(failedPromise);

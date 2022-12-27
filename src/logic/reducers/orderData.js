@@ -17,3 +17,19 @@ export const orderReducer = (state = [], actions) => {
     }
   }
 };
+
+export const boolReducer = (state = false, actions) => {
+  switch (actions.type) {
+    case "MAINTAIN_BOOL": {
+      state = false;
+      return state;
+    }
+    case "CHANGE_BOOL": {
+      state = true;
+      return state;
+    }
+    default: {
+      return state;
+    }
+  }
+};

@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const notify = (param) => {
   if (param == 1) {
@@ -13,11 +14,13 @@ const notify = (param) => {
 };
 
 export default function Upload() {
+  const gBool = useSelector((state) => state.gBool);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const [imgName, setimgName] = useState();
+  const [bool, setBool] = useState(false);
 
   const [formData, setformData] = useState({
     name: "",
@@ -52,6 +55,9 @@ export default function Upload() {
         }
       ).then(() => {
         notify(1);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       });
     } catch {
       notify(0);
@@ -66,6 +72,8 @@ export default function Upload() {
       formData.author &&
       document.getElementById("imgfile").files[0]
     ) {
+      toast.loading("Pls wait while we upload the details.");
+
       try {
         let inputElem = document.getElementById("imgfile");
         let file = inputElem.files[0];

@@ -54,8 +54,9 @@ export default function Navbar() {
           onTap={() => {
             !bool.booksBool && navigate("/");
           }}
+          // whileTap={{ scale: 0.9 }}
           style={{
-            textDecoration: bool.booksBool ? "underline" : "",
+            // textDecoration: bool.booksBool ? "underline" : "",
             color: bool.booksBool ? "#0058CC" : "",
           }}
         >
@@ -66,7 +67,7 @@ export default function Navbar() {
             !bool.ordersBool && navigate("/orders");
           }}
           style={{
-            textDecoration: bool.ordersBool ? "underline" : "",
+            // textDecoration: bool.ordersBool ? "underline" : "",
             color: bool.ordersBool ? "#0058CC" : "",
           }}
         >
@@ -77,8 +78,9 @@ export default function Navbar() {
             !bool.uploadBool && navigate("/upload");
           }}
           style={{
-            textDecoration: bool.uploadBool ? "underline" : "",
+            // textDecoration: bool.uploadBool ? "underline" : "",
             color: bool.uploadBool ? "#0058CC" : "",
+            // fontWeight: bool.uploadBool ? "600" : "500",
           }}
         >
           Upload

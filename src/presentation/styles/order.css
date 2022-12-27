@@ -91,6 +91,37 @@
   max-width: 10em;
 }
 
+.empty-container {
+  margin: 4em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-svg {
+  height: 5em;
+  margin: 1em;
+  color: #787d7e;
+}
+
+.empty-title {
+  font-weight: 500;
+}
+.empty-link {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  margin: 1em 0em;
+  margin-left: -1em;
+  color: #0058cc;
+  cursor: pointer;
+}
+.empty-link > svg {
+  height: 1em;
+  margin: 0em 0.3em;
+}
+
 @media only screen and (min-width: 1200px) {
   .order-container {
     max-width: 1000px;
