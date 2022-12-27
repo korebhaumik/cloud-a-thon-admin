@@ -113,6 +113,14 @@ form button {
   flex-wrap: wrap;
 }
 
+@media only screen and (min-width: 1200px) {
+  .upload-container {
+    /* justify-content: center; */
+    margin: 2em auto;
+    max-width: 1000px;
+  }
+}
+
 @media only screen and (max-width: 990px) {
   .upload-container {
     margin: 0em 5em;

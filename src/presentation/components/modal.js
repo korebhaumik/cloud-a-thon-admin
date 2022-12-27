@@ -13,7 +13,6 @@ export default function Modal({
   rating,
   genre,
   setBool,
-  quantity,
 }) {
   const dispatch = useDispatch();
   let ratingArr = [];

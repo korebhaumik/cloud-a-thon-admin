@@ -8,6 +8,7 @@ export default function Orders() {
   const orderData = useSelector((state) => state.orderData);
   const dispatch = useDispatch();
   const handleRemoveOrder = (id) => {
+    toast.success(`Order No. ${id} Removed Successfully.`);
     dispatch(removeOrder(id));
     console.log(id);
   };

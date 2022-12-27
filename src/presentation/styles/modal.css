@@ -113,6 +113,19 @@
   color: red;
 }
 
+@media only screen and (min-width: 1400px) {
+  .modal-rel-box {
+    width: 1000px;
+    margin: auto;
+    height: 79em;
+  }
+  .modal-container {
+    /* width: fit-content; */
+    /* left: 15%; */
+    transform: translate(-50%, -50%);
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .modal-content {
     padding: 5em 10em;
