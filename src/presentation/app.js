@@ -21,8 +21,8 @@ export default function App() {
   const handleFetch = async () => {
     try {
       const res = await fetch(
-        "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpClientFirestore/getBooksData"
-        // "http://127.0.0.1:5001/cloud-a-thon/us-central1/httpGetData/api/getData"
+        // "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpClientFirestore/getBooksData"
+        "https://us-central1-cloud-a-thon.cloudfunctions.net/httpClientFirestore/getBooksData"
       );
       if (res.ok) {
         const output = await res.json();
@@ -38,8 +38,8 @@ export default function App() {
   const handleFetchOrders = async () => {
     try {
       const res = await fetch(
-        // "https://us-central1-cloud-a-thon.cloudfunctions.net/httpGetData/api/getData"
-        "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpAdminFireStore/getOrders"
+        "https://us-central1-cloud-a-thon.cloudfunctions.net/httpAdminFireStore/getOrders"
+        // "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/httpAdminFireStore/getOrders"
       );
       if (res.ok) {
         const output = await res.json();

@@ -1,9 +1,8 @@
-import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { React} from "react";
 import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
 
 export const PageSlider = ({ bounds, setBounds }) => {
+  const data = useSelector((state) => state.allData);
   const handlePrev = () => {
     // console.log(bounds);
     if (bounds[0] - 10 >= 0) {
@@ -12,7 +11,7 @@ export const PageSlider = ({ bounds, setBounds }) => {
   };
   const handleNext = () => {
     // console.log(bounds);
-    if (bounds[1] + 10 < 60) {
+    if (bounds[0] + 10 < data.length) {
       setBounds([bounds[0] + 10, bounds[1] + 10]);
     }
   };
