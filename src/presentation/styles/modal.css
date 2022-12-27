@@ -13,8 +13,8 @@
   position: relative;
 }
 .modal-content {
-  padding: 5em 10em;
-  /* align-items: center; */
+  padding: 5em 15em;
+  align-items: center;
   /* width: fit-content; */
   justify-content: space-between;
   display: flex;

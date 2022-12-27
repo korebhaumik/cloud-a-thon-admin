@@ -73,7 +73,7 @@ export default function Modal({
             >
               Remove Book
             </motion.button>
-            <h4>Reviews</h4>
+            {/* <h4>Reviews</h4> */}
           </div>
         </div>
       </div>
