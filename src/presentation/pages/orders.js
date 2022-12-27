@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { removeOrder } from "../../logic/actions/globalActions";
 import { toast } from "react-hot-toast";
+import logo from "../assets/loading.svg";
 
 export default function Orders() {
   const orderData = useSelector((state) => state.orderData);
   const dispatch = useDispatch();
   const handleRemoveOrder = (id) => {
-    toast.success(`Order No. ${id} Removed Successfully.`);
+    toast.success(`Order No. ${id} marked as delivered.`);
     dispatch(removeOrder(id));
     console.log(id);
   };

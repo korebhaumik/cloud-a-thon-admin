@@ -4,11 +4,11 @@ import toast, { Toaster } from "react-hot-toast";
 
 const notify = (param) => {
   if (param == 1) {
-    toast.success("posted book succesfully");
+    toast.success("Posted Book Succesfully");
   } else if (param == 2) {
-    // do something for loading
+    toast.error("Fill All The Required Fields");
   } else {
-    toast.error("some error occured");
+    toast.error("Some Error Occured");
   }
 };
 
@@ -16,6 +16,9 @@ export default function Upload() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const [imgName, setimgName] = useState();
+
   const [formData, setformData] = useState({
     name: "",
     author: "",
@@ -37,19 +40,17 @@ export default function Upload() {
 
   // sending to function write on firestore
   function send2() {
-    console.log("in send 2");
     try {
       fetch(
-        "https://us-central1-admin-mehdi-cloud.cloudfunctions.net/firenode/api/create",
+        "https://us-central1-cloud-a-thon.cloudfunctions.net/firenode/api/create",
         {
-          // fetch("http://127.0.0.1:5001/cloud-a-thon/us-central1/firenode/api/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         }
-      ).then((res) => {
+      ).then(() => {
         notify(1);
       });
     } catch {
@@ -59,36 +60,33 @@ export default function Upload() {
 
   // sending to function to store on bucket
   function send1() {
-    console.log("in send 1");
-
-    try {
-      let inputElem = document.getElementById("imgfile");
-      let file = inputElem.files[0];
-
-      console.log(
-        `https://storage.googleapis.com/book-images-69420/${formData.name}_image.png`
-      );
-      // this will be the url in firestore url param
-      // https://storage.googleapis.com/finalbucket-cloudathon/${formData.name}_image.png
-
-      // below is the code for renaming the file
-      let blob = file.slice(0, file.size, "image/*"); //MIME type
-      let newFile = new File([blob], `${formData.name}_image.png`, {
-        type: "image/*",
-      });
-      let inputData = new FormData();
-      inputData.append("imgfile", newFile);
-      console.log(inputData);
-      // http://localhost:8084/
-      // https://dockernode1-2whsfrxuda-uc.a.run.app
-      fetch("https://dockernode1-2whsfrxuda-uc.a.run.app/uploadimg", {
-        method: "POST",
-        body: inputData,
-      }).then((res) => {
-        send2();
-      });
-    } catch {
-      notify(0);
+    if (
+      formData.name &&
+      formData.genre &&
+      formData.author &&
+      document.getElementById("imgfile").files[0]
+    ) {
+      try {
+        let inputElem = document.getElementById("imgfile");
+        let file = inputElem.files[0];
+        // below is the code for renaming the file
+        let blob = file.slice(0, file.size, "image/*"); //MIME type
+        let newFile = new File([blob], `${formData.name}_image.png`, {
+          type: "image/*",
+        });
+        let inputData = new FormData();
+        inputData.append("imgfile", newFile);
+        fetch("https://docker-storage-1-d7fxidgsxa-uc.a.run.app/uploadimg", {
+          method: "POST",
+          body: inputData,
+        }).then(() => {
+          send2();
+        });
+      } catch {
+        notify(0);
+      }
+    } else {
+      notify(2);
     }
   }
 
@@ -98,7 +96,13 @@ export default function Upload() {
       <form className="upload-container" onSubmit={handleSubmit}>
         <div className="upload-left">
           <div className="input-wrapper">
-            <input type="file" id="imgfile" />
+            <input
+              type="file"
+              id="imgfile"
+              onChange={() => {
+                setimgName(document.getElementById("imgfile").files[0].name);
+              }}
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -114,7 +118,11 @@ export default function Upload() {
               />
             </svg>
             <p>Upload Image</p>
-            <h4>Files supported png, jpg, jpeg.</h4>
+            {imgName ? (
+              <h4>{imgName}</h4>
+            ) : (
+              <h4>Files supported png, jpg, jpeg.</h4>
+            )}
           </div>
           <div className="div-right">{/* <h1>Hello world</h1> */}</div>
         </div>
