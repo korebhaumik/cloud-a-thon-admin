@@ -22,10 +22,12 @@ span {
 }
 
 a {
-  font-size: 1.2em;
-  margin: 1em;
   text-decoration: none;
   color: black;
+}
+.nav-a {
+  font-size: 1.2em;
+  margin: 1em;
 }
 
 @media only screen and (min-width: 1200px) {

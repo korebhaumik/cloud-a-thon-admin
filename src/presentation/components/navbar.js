@@ -80,7 +80,12 @@ export default function Navbar() {
         >
           Upload
         </motion.span>
-        <a href="https://analysispage69420-evap.onrender.com/">Analysis</a>
+        <a
+          className="nav-a"
+          href="https://analysispage69420-evap.onrender.com/"
+        >
+          Analysis
+        </a>
       </nav>
     </header>
   );
