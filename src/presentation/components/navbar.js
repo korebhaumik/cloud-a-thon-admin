@@ -82,7 +82,7 @@ export default function Navbar() {
         </motion.span>
         <a
           className="nav-a"
-          href="https://analysispage69420-evap.onrender.com/"
+          href="https://analysispage69420.onrender.com"
         >
           Analysis
         </a>
