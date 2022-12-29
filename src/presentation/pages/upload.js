@@ -20,7 +20,6 @@ export default function Upload() {
   };
 
   const [imgName, setimgName] = useState();
-  const [bool, setBool] = useState(false);
 
   const [formData, setformData] = useState({
     name: "",
@@ -72,7 +71,7 @@ export default function Upload() {
       formData.author &&
       document.getElementById("imgfile").files[0]
     ) {
-      toast.loading("Pls wait while we upload the details.");
+      toast.loading("Pleases wait while we upload the details.");
 
       try {
         let inputElem = document.getElementById("imgfile");

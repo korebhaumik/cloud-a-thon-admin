@@ -9,12 +9,23 @@ header {
 .logo {
   font-weight: 800;
   font-size: 2.3em;
+  font-weight: 600;
+  /* font-size: 1em; */
+  color: #eeb627;
+  font-family: "Dancing Script", cursive;
 }
 
 span {
   font-size: 1.2em;
   margin: 1em;
   cursor: pointer;
+}
+
+a {
+  font-size: 1.2em;
+  margin: 1em;
+  text-decoration: none;
+  color: black;
 }
 
 @media only screen and (min-width: 1200px) {

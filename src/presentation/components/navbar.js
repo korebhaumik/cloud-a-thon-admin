@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { motion, AnimateSharedLayout } from "framer-motion";
-import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Hamburg from "./hamburg";
 
 export default function Navbar() {
@@ -47,16 +47,14 @@ export default function Navbar() {
 
   return (
     <header>
-      <h1 className="logo">Bookstore</h1>
+      <h1 className="logo">The Golden Ink</h1>
       <Hamburg />
       <nav className="nav-right">
         <motion.span
           onTap={() => {
             !bool.booksBool && navigate("/");
           }}
-          // whileTap={{ scale: 0.9 }}
           style={{
-            // textDecoration: bool.booksBool ? "underline" : "",
             color: bool.booksBool ? "#0058CC" : "",
           }}
         >
@@ -67,7 +65,6 @@ export default function Navbar() {
             !bool.ordersBool && navigate("/orders");
           }}
           style={{
-            // textDecoration: bool.ordersBool ? "underline" : "",
             color: bool.ordersBool ? "#0058CC" : "",
           }}
         >
@@ -78,13 +75,12 @@ export default function Navbar() {
             !bool.uploadBool && navigate("/upload");
           }}
           style={{
-            // textDecoration: bool.uploadBool ? "underline" : "",
             color: bool.uploadBool ? "#0058CC" : "",
-            // fontWeight: bool.uploadBool ? "600" : "500",
           }}
         >
           Upload
         </motion.span>
+        <a href="https://analysispage69420-evap.onrender.com/">Analysis</a>
       </nav>
     </header>
   );
