@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Hamburg from "./hamburg";
 
 export default function Navbar() {
