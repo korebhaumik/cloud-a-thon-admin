@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./styles/app.css";
 import "./styles/nav.css";
 import "./styles/books.css";
@@ -18,6 +18,10 @@ import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    document.title = "The Golden Ink And Co.";
+  }, []);
+  
   const handleFetch = async () => {
     try {
       const res = await fetch(
